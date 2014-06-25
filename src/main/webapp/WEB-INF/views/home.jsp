@@ -6,7 +6,7 @@
 	response.setContentType("text/html");
 	response.setCharacterEncoding("UTF-8");
 %>
-<html lang="es_PE">
+<html lang="es_PE" style="font:12px sans-serif;">
 <head>
 <c:import url="../views/jspf/resources.jsp" />
 </head>
