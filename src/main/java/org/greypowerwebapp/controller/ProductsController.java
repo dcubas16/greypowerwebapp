@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
-public class MainController {
+@RequestMapping("Products/")
+public class ProductsController {
 	
-	@RequestMapping(value="home.htm", method=RequestMethod.GET )
-	public String home(Model model)
+	@RequestMapping(value="createChemicalProduct.htm", method=RequestMethod.GET )
+	public String createChemicalProduct(Model model)
 	{
-		return "home";
+		return "createChemicalProduct";
 	}
 	
 	@RequestMapping(value="saveChemicalProduct.htm", method=RequestMethod.GET )

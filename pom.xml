@@ -400,59 +400,62 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.axis2</groupId>
-				<artifactId>axis2-wsdl2code-maven-plugin</artifactId>
-				<version>1.6.2</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>wsdl2code</goal>
-						</goals>
-						<configuration>
-							<wsdlFile>src/main/resources/wsdl/CreateChemicalProductService.wsdl</wsdlFile>
-							<databindingName>adb</databindingName>
-							<packageName>org.greypowerwebapp.services.client</packageName>
-							<outputDirectory>src/main/java</outputDirectory>
-							<flattenFiles>true</flattenFiles>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin.version}</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-			<!-- The Resources Plugin handles the copying of project resources to 
-				the output directory. @see http://maven.apache.org/plugins/maven-resources-plugin/index.html -->
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
-				<executions>
-					<execution>
-						<id>copy-meta-inf</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${project.basedir}/src/main/java/META-INF</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.axis2</groupId>
+					<artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+					<version>1.6.2</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>wsdl2code</goal>
+							</goals>
+							<configuration>
+								<wsdlFile>src/main/resources/wsdl/CreateChemicalProductService.wsdl</wsdlFile>
+								<databindingName>adb</databindingName>
+								<packageName>org.greypowerwebapp.services.client</packageName>
+								<outputDirectory>src/main/java</outputDirectory>
+								<flattenFiles>true</flattenFiles>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<source>1.6</source>
+						<target>1.6</target>
+					</configuration>
+				</plugin>
+				<!-- The Resources Plugin handles the copying of project resources to 
+					the output directory. @see http://maven.apache.org/plugins/maven-resources-plugin/index.html -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+					<executions>
+						<execution>
+							<id>copy-meta-inf</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>copy-resources</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
+								<resources>
+									<resource>
+										<directory>${project.basedir}/src/main/java/META-INF</directory>
+									</resource>
+								</resources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 
 	</build>
 

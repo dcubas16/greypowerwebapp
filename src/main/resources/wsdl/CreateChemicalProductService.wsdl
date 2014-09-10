@@ -1,71 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/CreateChemicalProductService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CreateChemicalProductService" targetNamespace="http://www.example.org/CreateChemicalProductService/">
-  <wsdl:types>
-    <xsd:schema targetNamespace="http://www.example.org/CreateChemicalProductService/">
-      <xsd:element name="ChemicalProduct">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="in" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="CreateChemicalProductResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="id" type="xsd:long"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="CreateChemicalProductRequest"
-      	type="tns:ChemicalProduct">
-      </xsd:element>
-
-      <xsd:complexType name="ChemicalProduct">
-      	<xsd:sequence>
-
-
-
-
-
-
-
-      		<xsd:element name="id" type="xsd:long"></xsd:element>
-      		<xsd:element name="name" type="xsd:string"></xsd:element>
-      		<xsd:element name="description" type="xsd:string"></xsd:element>
-      		<xsd:element name="unitOfMeasure" type="xsd:string"></xsd:element>
-      		<xsd:element name="unitPrice" type="xsd:string"></xsd:element>
-      		<xsd:element name="imagePath" type="xsd:string"></xsd:element>
-      	</xsd:sequence>
-      </xsd:complexType>
-    </xsd:schema>
-  </wsdl:types>
-  <wsdl:message name="CreateChemicalProductRequest">
-    <wsdl:part element="tns:CreateChemicalProductRequest" name="parameters" />
-  </wsdl:message>
-  <wsdl:message name="CreateChemicalProductResponse">
-    <wsdl:part element="tns:CreateChemicalProductResponse" name="parameters"/>
-  </wsdl:message>
-  <wsdl:portType name="CreateChemicalProductService">
-    <wsdl:operation name="CreateChemicalProduct">
-      <wsdl:input message="tns:CreateChemicalProductRequest"/>
-      <wsdl:output message="tns:CreateChemicalProductResponse"/>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="CreateChemicalProductServiceSOAP" type="tns:CreateChemicalProductService">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="CreateChemicalProduct">
-      <soap:operation soapAction="http://www.example.org/CreateChemicalProductService/CreateChemicalProduct"/>
-      <wsdl:input>
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="CreateChemicalProductService">
-    <wsdl:port binding="tns:CreateChemicalProductServiceSOAP" name="CreateChemicalProductService">
-      <soap:address location="http://localhost:8081/greypowerservices/endponits/"/>
-    </wsdl:port>
-  </wsdl:service>
+<wsdl:definitions name="CreateChemicalProductService"
+	targetNamespace="http://org/greypowerservices/webservices/productservice"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://org/greypowerservices/webservices/productservice"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://org/greypowerservices/webservices/productservice"
+	xmlns:sch1="http://webservices.greypowerservices.org">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://org/greypowerservices/webservices/productservice"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:chemicalProduct="http://webservices.greypowerservices.org"
+			attributeFormDefault="unqualified" elementFormDefault="qualified">
+			<xsd:import namespace="http://webservices.greypowerservices.org" />
+			<xsd:element name="CreateChemicalProductRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ChemicalProduct" type="chemicalProduct:ChemicalProduct">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CreateChemicalProductResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="id" type="xsd:long" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		<xs:schema xmlns="http://webservices.greypowerservices.org"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+			elementFormDefault="qualified" targetNamespace="http://webservices.greypowerservices.org">
+			<xs:element name="ChemicalProduct" type="ChemicalProduct" />
+			<xs:complexType name="ChemicalProduct">
+				<xs:sequence>
+					<xs:element name="id" type="xs:long" />
+					<xs:element name="name" type="xs:string" />
+					<xs:element name="description" type="xs:string" />
+					<xs:element name="unitOfMeasure" type="xs:string" />
+					<xs:element name="unitPrice" type="xs:double" />
+					<xs:element name="imagePath" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="CreateChemicalProductRequest">
+		<wsdl:part element="tns:CreateChemicalProductRequest" name="CreateChemicalProductRequest" />
+	</wsdl:message>
+	<wsdl:message name="CreateChemicalProductResponse">
+		<wsdl:part element="tns:CreateChemicalProductResponse" name="CreateChemicalProductResponse" />
+	</wsdl:message>
+	<wsdl:portType name="CreateChemicalProductService">
+		<wsdl:operation name="CreateChemicalProduct">
+			<wsdl:input message="tns:CreateChemicalProductRequest"
+				name="CreateChemicalProductRequest" />
+			<wsdl:output message="tns:CreateChemicalProductResponse"
+				name="CreateChemicalProductResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CreateChemicalProductServiceSOAP"
+		type="tns:CreateChemicalProductService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="CreateChemicalProduct">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CreateChemicalProductService">
+		<wsdl:port binding="tns:CreateChemicalProductServiceSOAP"
+			name="CreateChemicalProductServiceSOAP">
+			<soap:address location="http://localhost:8081/greypowerservices/endpoints" />
+		</wsdl:port>
+	</wsdl:service>
 </wsdl:definitions>
