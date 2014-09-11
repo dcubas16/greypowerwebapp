@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions name="GetUnitMeasure"
+	targetNamespace="http://org/greypowerservices/webservices/productservice"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://org/greypowerservices/webservices/productservice"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://org/greypowerservices/webservices/productservice"
+	xmlns:sch1="http://webservices.greypowerservices.org">
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://org/greypowerservices/webservices/productservice"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:unitMeasure="http://webservices.greypowerservices.org"
+			attributeFormDefault="unqualified" elementFormDefault="qualified">
+			<xsd:import namespace="http://webservices.greypowerservices.org" />
+			<xsd:element name="GetUnitMeasureRequest">
+				<xsd:complexType />
+			</xsd:element>
+			<xsd:element name="GetUnitMeasureResponse">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+						<xsd:element name="UnitMeasure" type="unitMeasure:UnitMeasure" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		<xs:schema xmlns="http://webservices.greypowerservices.org"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+			elementFormDefault="qualified" targetNamespace="http://webservices.greypowerservices.org">
+			<xs:element name="UnitMeasure" type="UnitMeasure" />
+			<xs:complexType name="UnitMeasure">
+				<xs:sequence>
+					<xs:element name="id" type="xs:long" />
+					<xs:element name="name" type="xs:string" />
+					<xs:element name="abbreviation" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="GetUnitMeasureRequest">
+		<wsdl:part element="tns:GetUnitMeasureRequest" name="GetUnitMeasureRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetUnitMeasureResponse">
+		<wsdl:part element="tns:GetUnitMeasureResponse" name="GetUnitMeasureResponse" />
+	</wsdl:message>
+	<wsdl:portType name="GetUnitMeasure">
+		<wsdl:operation name="GetUnitMeasure">
+			<wsdl:input message="tns:GetUnitMeasureRequest" />
+			<wsdl:output message="tns:GetUnitMeasureResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="GetUnitMeasureSOAP" type="tns:GetUnitMeasure">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetUnitMeasure">
+			<soap:operation
+				soapAction="http://org/greypowerservices/webservices/productservice/GetUnitMeasure/NewOperation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="GetUnitMeasure">
+		<wsdl:port binding="tns:GetUnitMeasureSOAP" name="GetUnitMeasureSOAP">
+			<soap:address location="http://localhost:8081/greypowerservices/endpoints" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

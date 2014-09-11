@@ -408,11 +408,27 @@
 					<version>1.6.2</version>
 					<executions>
 						<execution>
+							<id>ws1</id>
 							<goals>
 								<goal>wsdl2code</goal>
 							</goals>
 							<configuration>
+								<unpackClasses>true</unpackClasses>
 								<wsdlFile>src/main/resources/wsdl/CreateChemicalProductService.wsdl</wsdlFile>
+								<databindingName>adb</databindingName>
+								<packageName>org.greypowerwebapp.services.client</packageName>
+								<outputDirectory>src/main/java</outputDirectory>
+								<flattenFiles>true</flattenFiles>
+							</configuration>
+						</execution>
+						<execution>
+							<id>ws2</id>
+							<goals>
+								<goal>wsdl2code</goal>
+							</goals>
+							<configuration>
+								<unpackClasses>true</unpackClasses>
+								<wsdlFile>src/main/resources/wsdl/GetUnitMeasure.wsdl</wsdlFile>
 								<databindingName>adb</databindingName>
 								<packageName>org.greypowerwebapp.services.client</packageName>
 								<outputDirectory>src/main/java</outputDirectory>

@@ -2,9 +2,9 @@ package org.greypowerwebapp.controller;
 
 import java.rmi.RemoteException;
 
-import org.greypowerwebapp.services.client.CreateChemicalProductServiceStub;
-import org.greypowerwebapp.services.client.CreateChemicalProductServiceStub.ChemicalProduct;
-import org.greypowerwebapp.services.client.CreateChemicalProductServiceStub.CreateChemicalProductRequest;
+//import org.greypowerwebapp.services.client.CreateChemicalProductServiceStub;
+//import org.greypowerwebapp.services.client.CreateChemicalProductServiceStub.ChemicalProduct;
+//import org.greypowerwebapp.services.client.CreateChemicalProductServiceStub.CreateChemicalProductRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,20 +23,20 @@ public class MainController {
 	@RequestMapping(value="saveChemicalProduct.htm", method=RequestMethod.GET )
 	public String saveChemicalProduct(Model model) throws RemoteException
 	{
-		CreateChemicalProductServiceStub createChemicalProductServiceStub = new CreateChemicalProductServiceStub("http://localhost:8081/greypowerservices/endpoints/CreateChemicalProductService.wsdl");
-		CreateChemicalProductRequest createChemicalProductRequest = new CreateChemicalProductRequest();
-		
-		ChemicalProduct chemicalProduct = new ChemicalProduct();
-		chemicalProduct.setName("Prod Service");
-		chemicalProduct.setDescription("Prod Service");
-		chemicalProduct.setUnitPrice(123);
-		chemicalProduct.setId(200L);
-		chemicalProduct.setUnitOfMeasure("Hi");
-		chemicalProduct.setImagePath("HI");
-		
-		
-		createChemicalProductRequest.setChemicalProduct(chemicalProduct);
-		createChemicalProductServiceStub.createChemicalProduct(createChemicalProductRequest);
+//		CreateChemicalProductServiceStub createChemicalProductServiceStub = new CreateChemicalProductServiceStub("http://localhost:8081/greypowerservices/endpoints/CreateChemicalProductService.wsdl");
+//		CreateChemicalProductRequest createChemicalProductRequest = new CreateChemicalProductRequest();
+//		
+//		ChemicalProduct chemicalProduct = new ChemicalProduct();
+//		chemicalProduct.setName("Prod Service");
+//		chemicalProduct.setDescription("Prod Service");
+//		chemicalProduct.setUnitPrice(123);
+//		chemicalProduct.setId(200L);
+//		chemicalProduct.setUnitOfMeasure("Hi");
+//		chemicalProduct.setImagePath("HI");
+//		
+//		
+//		createChemicalProductRequest.setChemicalProduct(chemicalProduct);
+//		createChemicalProductServiceStub.createChemicalProduct(createChemicalProductRequest);
 //		WebServiceClientUtils.logCreateChemicalProduct(createChemicalProductResponse.getId());
 		return "home";
 	}
