@@ -36,13 +36,19 @@
 					<label for="inputPassword3" class="col-sm-2 control-label">Unidad
 						de Medida</label>
 					<div class="col-sm-10">
-						<select class="form-control">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
+					
+					<c:forEach items="${model.unitsMeasure}" var="unitMeasure">
+						<h1>hELLO</h1>
+					</c:forEach>
+<!-- 					<select class="form-control"> -->
+<!-- 					</select> -->
+<!-- 						<select class="form-control"> -->
+<!-- 							<option>1</option> -->
+<!-- 							<option>2</option> -->
+<!-- 							<option>3</option> -->
+<!-- 							<option>4</option> -->
+<!-- 							<option>5</option> -->
+<!-- 						</select> -->
 					</div>
 				</div>
 
