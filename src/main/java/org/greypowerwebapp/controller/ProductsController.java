@@ -37,6 +37,7 @@ public class ProductsController {
 		}
 		
 		model.addAttribute("unitsMeasure", unitMeasures);
+		model.addAttribute("prueba", 1);
 		
 		return "createChemicalProduct";
 	}
