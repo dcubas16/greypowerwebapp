@@ -1,12 +1,11 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@	taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
 	response.setContentType("text/html");
 	response.setCharacterEncoding("UTF-8");
-
 %>
 <html lang="es_PE" style="font: 12px sans-serif;">
 <head>
@@ -38,25 +37,20 @@
 					<label for="inputPassword3" class="col-sm-2 control-label">Unidad
 						de Medida</label>
 					<div class="col-sm-10">
-<%-- 					<c:out value="${prueba}"/> --%>
-<% out.println(request.getAttribute("prueba")); %> 
-<h1 data-bind="text: prueba"></h1>
-<%-- <c:out value="${prueba}" />  --%>
-
-<!-- 					<select class="form-control"> -->
-<!-- 					</select> -->
-<!-- 						<select class="form-control"> -->
-<!-- 							<option>1</option> -->
-<!-- 							<option>2</option> -->
-<!-- 							<option>3</option> -->
-<!-- 							<option>4</option> -->
-<!-- 							<option>5</option> -->
-<!-- 						</select> -->
+						<select class="form-control" name="unitMeasureId"
+							id="unitMeasureId"
+							data-bind="value: unitMeasure, foreach: viewModel.unitsMeasure().unitMeasure">
+							<!-- ko if: ($index() == '0') -->
+							<option data-bind="text: 'Seleccione'"></option>
+							<!-- /ko -->
+							<option data-bind="value: unitMeasure.id, text: unitMeasure.name"></option>
+						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="inputPassword3" class="col-sm-2 control-label">Precio Unitario</label>
+					<label for="inputPassword3" class="col-sm-2 control-label">Precio
+						Unitario</label>
 					<div class="col-sm-10">
 						<input type="number" class="form-control" id="inputEmail3"
 							placeholder="Precio Unitario">
@@ -76,13 +70,11 @@
 
 </body>
 <script>
-	$(function() {
-		var viewModel = {
-			mainMenuSelected : ko.observable(1),
-			prueba: ko.observable(<% out.println(request.getAttribute("prueba")); %> ),
-			unitsMeasure : ko.observableArray(ko.toJS(<% out.println("'"+request.getAttribute("unitsMeasure")+"'"); %>))
-		};
+	var viewModel = {
+		unitsMeasure : ko.observableArray(ko.toJS(<%out.println(request.getAttribute("unitsMeasure"));%>))
+	};
 
+	$(function() {
 		ko.applyBindings(viewModel, $('body')[0]);
 	});
 </script>
