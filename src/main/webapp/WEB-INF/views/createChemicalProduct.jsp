@@ -1,5 +1,4 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@	taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -18,18 +17,19 @@
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
-			<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form" method="POST" action="../Products/saveChemicalProduct.htm" 
+				modelAttribute="chemicalProducto">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
 					<div class="col-sm-10">
-						<input type="email" class="form-control" id="inputEmail3"
+						<input type="text" class="form-control" id="name" name="name"
 							placeholder="Nombre">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword3" class="col-sm-2 control-label">Descripción</label>
 					<div class="col-sm-10">
-						<textarea class="form-control" rows="3" placeholder="Descripción"></textarea>
+						<textarea class="form-control" rows="3" placeholder="Descripción" id="description" name="description"></textarea>
 					</div>
 				</div>
 
@@ -37,14 +37,9 @@
 					<label for="inputPassword3" class="col-sm-2 control-label">Unidad
 						de Medida</label>
 					<div class="col-sm-10">
-						<select class="form-control" name="unitMeasureId"
-							id="unitMeasureId"
-							data-bind="value: unitMeasure, foreach: viewModel.unitsMeasure().unitMeasure">
-							<!-- ko if: ($index() == '0') -->
-							<option data-bind="text: 'Seleccione'"></option>
-							<!-- /ko -->
-							<option data-bind="value: unitMeasure.id, text: unitMeasure.name"></option>
-						</select>
+						<select class="form-control" id="unitMeasureId" name="unitMeasureId"
+							data-bind="options: unitsMeasure, optionsText: 'name', value: 'id',
+                       optionsCaption: 'Seleccione'"></select>
 					</div>
 				</div>
 
@@ -52,7 +47,7 @@
 					<label for="inputPassword3" class="col-sm-2 control-label">Precio
 						Unitario</label>
 					<div class="col-sm-10">
-						<input type="number" class="form-control" id="inputEmail3"
+						<input type="number" class="form-control" name="price" id="price"
 							placeholder="Precio Unitario">
 					</div>
 				</div>
@@ -66,12 +61,17 @@
 		</div>
 		<div class="col-md-2"></div>
 	</div>
-
-
 </body>
 <script>
 	var viewModel = {
-		unitsMeasure : ko.observableArray(ko.toJS(<%out.println(request.getAttribute("unitsMeasure"));%>))
+			name : ko.observable(),
+			description : ko.observable(),
+			unitMeasureId : ko.observable(),
+			price : ko.observable(),
+			imageUrl : ko.observable(),
+			tecnicalDocumentUrl : ko.observable(),
+			
+			unitsMeasure : ko.toJS(<%out.println(request.getAttribute("unitsMeasure"));%>)
 	};
 
 	$(function() {

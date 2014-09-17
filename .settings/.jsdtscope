@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="WEB-INF/resources/js/docs.min.js" kind="src" path="src/main/webapp"/>
+	<classpathentry excluding="WEB-INF/resources/js/docs.min.js|WEB-INF/resources/telerik.kendoui.2014.1.416.core/js/kendo.all.min.js" kind="src" path="src/main/webapp"/>
 	<classpathentry kind="src" path="target/m2e-wtp/web-resources"/>
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.WebProject">

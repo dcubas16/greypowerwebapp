@@ -1,13 +1,21 @@
 package org.greypowerwebapp.model;
 
-
 public class UnitMeasure {
 
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String abbreviation;
+
+	public UnitMeasure() {
+	}
+
+	public UnitMeasure(Long id, String name, String abbreviation) {
+		this.id = id;
+		this.name = name;
+		this.abbreviation = abbreviation;
+	}
 
 	public Long getId() {
 		return id;
