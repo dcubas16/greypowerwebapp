@@ -33,7 +33,7 @@
 		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
 		<maven.apt.plugin.version>1.0</maven.apt.plugin.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -200,7 +200,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Logger -->
 		<dependency>
 			<groupId>log4j</groupId>
@@ -372,7 +372,7 @@
 			<version>${log4j.version}</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<resources>
 			<resource>
@@ -380,7 +380,6 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-<!-- 		<pluginManagement> -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.axis2</groupId>
@@ -399,6 +398,7 @@
 							<outputDirectory>src/main/java</outputDirectory>
 							<flattenFiles>true</flattenFiles>
 						</configuration>
+						<phase>install</phase>
 					</execution>
 					<execution>
 						<id>wsdl2</id>
@@ -412,6 +412,7 @@
 							<outputDirectory>src/main/java</outputDirectory>
 							<flattenFiles>true</flattenFiles>
 						</configuration>
+						<phase>install</phase>
 					</execution>
 				</executions>
 			</plugin>
@@ -441,9 +442,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-<!-- 		</pluginManagement> -->
 	</build>
-	
 	<repositories>
 		<!-- For main Spring releases -->
 		<repository>
