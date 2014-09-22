@@ -19,6 +19,7 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
+			
 		</xsd:schema>
 		<xs:schema xmlns="http://webservices.greypowerservices.org"
 			xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"

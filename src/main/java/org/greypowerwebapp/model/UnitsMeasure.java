@@ -21,20 +21,22 @@ public class UnitsMeasure {
 	public void setUnitsMeasure(List<UnitMeasure> unitsMeasure) {
 		this.unitsMeasure = unitsMeasure;
 	}
-	
-	public void converToUnitsMeasure(GetUnitMeasureResponseSequence[] sequence){
-		
+
+	public void converToUnitsMeasure(GetUnitMeasureResponseSequence[] sequence) {
+
 		for (GetUnitMeasureResponseSequence list : sequence) {
-			UnitMeasure unitMeasure = new UnitMeasure(list.getUnitMeasure().getId(), list.getUnitMeasure().getName(), list.getUnitMeasure().getAbbreviation());
+			UnitMeasure unitMeasure = new UnitMeasure(list.getUnitMeasure()
+					.getId(), list.getUnitMeasure().getName(), list
+					.getUnitMeasure().getAbbreviation());
 			unitsMeasure.add(unitMeasure);
 		}
 	}
-	
+
 	@JsonIgnore
 	public String getAsJSON() {
-	    ObjectMapper mapper = new ObjectMapper();
-	    try {
-			return mapper.writeValueAsString(this.getUnitsMeasure()) ;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			return mapper.writeValueAsString(this.getUnitsMeasure());
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +47,7 @@ public class UnitsMeasure {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    return null;
+		return null;
 	}
-	
+
 }

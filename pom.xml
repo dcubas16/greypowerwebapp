@@ -414,6 +414,20 @@
 						</configuration>
 						<phase>install</phase>
 					</execution>
+					<execution>
+						<id>wsdl3</id>
+						<goals>
+							<goal>wsdl2code</goal>
+						</goals>
+						<configuration>
+							<wsdlFile>src/main/resources/wsdl/GetChemicalProducts.wsdl</wsdlFile>
+							<databindingName>adb</databindingName>
+							<packageName>org.greypowerwebapp.webservices.client</packageName>
+							<outputDirectory>src/main/java</outputDirectory>
+							<flattenFiles>true</flattenFiles>
+						</configuration>
+						<phase>install</phase>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>

@@ -6,5 +6,6 @@ public class ServicesNames {
 //	public static final ConfigurationContext GetUnitMeasuresService = null;
 	public static final String getUnitMeasuresService = "http://localhost:8081/greypowerservices/endpoints/GetUnitMeasure.wsdl";
 	public static final String createChemicalProductService = "http://localhost:8081/greypowerservices/endpoints/CreateChemicalProductService.wsdl";
-	
+	public static final String getChemicalProducts = "http://localhost:8081/greypowerservices/endpoints/GetChemicalProducts.wsdl";
+
 }

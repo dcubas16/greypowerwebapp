@@ -3,10 +3,14 @@ package org.greypowerwebapp.controller;
 import java.rmi.RemoteException;
 
 import org.greypowerwebapp.helper.ServicesNames;
+import org.greypowerwebapp.model.ChemicalProducts;
 import org.greypowerwebapp.model.UnitsMeasure;
 import org.greypowerwebapp.webservices.client.CreateChemicalProductServiceStub;
 import org.greypowerwebapp.webservices.client.CreateChemicalProductServiceStub.ChemicalProduct;
 import org.greypowerwebapp.webservices.client.CreateChemicalProductServiceStub.CreateChemicalProductRequest;
+import org.greypowerwebapp.webservices.client.GetChemicalProductsStub;
+import org.greypowerwebapp.webservices.client.GetChemicalProductsStub.GetChemicalProductsRequest;
+import org.greypowerwebapp.webservices.client.GetChemicalProductsStub.GetChemicalProductsResponse;
 import org.greypowerwebapp.webservices.client.GetUnitMeasureStub;
 import org.greypowerwebapp.webservices.client.GetUnitMeasureStub.GetUnitMeasureRequest;
 import org.greypowerwebapp.webservices.client.GetUnitMeasureStub.GetUnitMeasureResponse;
@@ -25,8 +29,9 @@ public class ProductsController {
 
 		UnitsMeasure unitsMeasure = new UnitsMeasure();
 
-		GetUnitMeasureStub getUnitMeasureStub = new GetUnitMeasureStub(ServicesNames.getUnitMeasuresService);
-		
+		GetUnitMeasureStub getUnitMeasureStub = new GetUnitMeasureStub(
+				ServicesNames.getUnitMeasuresService);
+
 		GetUnitMeasureRequest getUnitMeasureRequest = new GetUnitMeasureRequest();
 
 		GetUnitMeasureResponse getUnitMeasureResponse = getUnitMeasureStub
@@ -40,10 +45,12 @@ public class ProductsController {
 		return "createChemicalProduct";
 	}
 
-	@RequestMapping(value="saveChemicalProduct.htm", method=RequestMethod.POST )
-	public String saveChemicalProduct(@ModelAttribute("chemicalProduct") org.greypowerwebapp.model.ChemicalProduct chemicalProduct) throws RemoteException
-	{
-		CreateChemicalProductServiceStub createChemicalProductServiceStub = new CreateChemicalProductServiceStub(ServicesNames.createChemicalProductService);
+	@RequestMapping(value = "saveChemicalProduct.htm", method = RequestMethod.POST)
+	public String saveChemicalProduct(
+			@ModelAttribute("chemicalProduct") org.greypowerwebapp.model.ChemicalProduct chemicalProduct)
+			throws RemoteException {
+		CreateChemicalProductServiceStub createChemicalProductServiceStub = new CreateChemicalProductServiceStub(
+				ServicesNames.createChemicalProductService);
 		CreateChemicalProductRequest createChemicalProductRequest = new CreateChemicalProductRequest();
 
 		ChemicalProduct chemicalProductAux = new ChemicalProduct();
@@ -54,10 +61,29 @@ public class ProductsController {
 		chemicalProductAux.setUnitOfMeasure("Hi");
 		chemicalProductAux.setImagePath("HI");
 
-
 		createChemicalProductRequest.setChemicalProduct(chemicalProductAux);
-		createChemicalProductServiceStub.createChemicalProduct(createChemicalProductRequest);
-//		WebServiceClientUtils.logCreateChemicalProduct(createChemicalProductResponse.getId());
+		createChemicalProductServiceStub
+				.createChemicalProduct(createChemicalProductRequest);
 		return "home";
+	}
+
+	@RequestMapping(value = "getChemicalProducts.htm", method = RequestMethod.GET)
+	public String getChemicalProducts(Model model) throws RemoteException {
+		
+		ChemicalProducts chemicalProducts = new ChemicalProducts();
+		
+		GetChemicalProductsStub chemicalProductsStub = new GetChemicalProductsStub(
+				ServicesNames.getChemicalProducts);
+
+		GetChemicalProductsRequest getChemicalProductsRequest = new GetChemicalProductsRequest();
+
+		GetChemicalProductsResponse getUnitMeasureResponse = chemicalProductsStub
+				.getChemicalProducts(getChemicalProductsRequest);
+
+		chemicalProducts.converToChemicalProducts(getUnitMeasureResponse.getGetChemicalProductsResponseSequence());
+		
+		model.addAttribute("chemicalProducts", chemicalProducts.getAsJSON());
+		
+		return "getChemicalProducts";
 	}
 }

@@ -15,21 +15,26 @@ public class ChemicalProduct {
 	
 	private double price;
 	
+	private String imagePath;
+	
 	public ChemicalProduct(){}
 	
-	public ChemicalProduct(String name, String description, Long unitMeasureId, double price){
+	public ChemicalProduct(String name, String description, Long unitMeasureId, double price, String imagePath){
 		this.name = name;
 		this.description = description;
 		this.unitMeasureId = unitMeasureId;
 		this.price = price;
+		this.setImagePath(imagePath);
+		
 	}
 	
-	public ChemicalProduct(Long id, String name, String description, Long unitMeasureId, double price){
+	public ChemicalProduct(Long id, String name, String description, Long unitMeasureId, double price, String imagePath){
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.unitMeasureId = unitMeasureId;
 		this.price = price;
+		this.setImagePath(imagePath);
 	}
 
 	public Long getId() {
@@ -70,6 +75,14 @@ public class ChemicalProduct {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 
 }

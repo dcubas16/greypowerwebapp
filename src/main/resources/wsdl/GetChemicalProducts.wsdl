@@ -7,33 +7,27 @@
 	<wsdl:types>
 		<xsd:schema targetNamespace="http://org/greypowerservices/webservices/productservice"
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:unitMeasure="http://webservices.greypowerservices.org"
+			xmlns:chemicalProduct="http://webservices.greypowerservices.org"
 			attributeFormDefault="unqualified" elementFormDefault="qualified">
-			<xsd:import namespace="http://webservices.greypowerservices.org" />
+			<xsd:import namespace="http://webservices.greypowerservices.org"
+			schemaLocation="ChemicalProduct.xsd" />
 			<xsd:element name="GetChemicalProductsRequest">
 				<xsd:complexType/>
 			</xsd:element>
 			<xsd:element name="GetChemicalProductsResponse">
 				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="out" type="xsd:string" />
+					<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+						<xsd:element name="ChemicalProduct" type="chemicalProduct:ChemicalProduct" />
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-		</xsd:schema>
-		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-			targetNamespace="http://org/greypowerservices/webservices/productservice">
-			<xsd:element
-				name="http://webservices.greypowerservices.orgChemicalProductsRequest"
-				type="xsd:string"></xsd:element>
-			<xsd:element name="GetChemicalProductsRequestGetChemicalProductsRequest"
-				type="xsd:string"></xsd:element>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="GetChemicalProductsRequest">
 		<wsdl:part element="tns:GetChemicalProductsRequest" name="GetChemicalProductsRequest" />
 	</wsdl:message>
 	<wsdl:message name="GetChemicalProductsResponse">
-		<wsdl:part element="GetChemicalProductsResponse" name="parameters" />
+		<wsdl:part element="tns:GetChemicalProductsResponse" name="GetChemicalProductsResponse" />
 	</wsdl:message>
 	<wsdl:portType name="GetChemicalProducts">
 		<wsdl:operation name="GetChemicalProducts">
